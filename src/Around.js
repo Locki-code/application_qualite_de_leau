@@ -17,13 +17,31 @@ class Around extends Component{
             })
     }
 
+    color(quality) {
+        /*let g = quality * (255 / 100);
+        let r = 255 - g;
+        let b = 0;*/
+        let g,r;
+        if(quality < 50){
+            r = 255;
+            g = 0;
+        }else if(quality < 90){
+            r = 205;
+            g = 80;
+        }else {
+            r = 50;
+            g = 200;
+        }
+        return "rgb(" + r + ", " + g + ", " + 0 + ")";
+    }
+
     render(){
         return(
             <div>
                 <table>
                     <tr>
-                        <td>Ville</td>
-                        <td>Indice de qualité</td>
+                        <th>Ville</th>
+                        <th>Indice de qualité</th>
                     </tr>
                     {
                         // Affichage des indices de valeur des villes voisines
@@ -31,7 +49,9 @@ class Around extends Component{
                             return(
                                 <tr>
                                     <td>{unit.name}</td>
-                                    <td>{unit.quality}</td>
+                                    <td style={ { color : this.color(unit.quality)} } >
+                                        {unit.quality}
+                                    </td>
                                 </tr>
                             )
                         })
