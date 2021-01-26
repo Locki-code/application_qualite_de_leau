@@ -26,6 +26,7 @@ class Around extends Component{
                         <td>Indice de qualité</td>
                     </tr>
                     {
+                        // Affichage des indices de valeur des villes voisines
                         this.state.list.map( (unit) => {
                             return(
                                 <tr>
